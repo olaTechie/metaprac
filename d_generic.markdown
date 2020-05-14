@@ -4,16 +4,16 @@ title: Generic meta
 # permalink: /generic/
 ---
 
-# GENERIC DATA 
+# GENERIC DATA
 
 **Learning outcomes**:
 
 You will have _knowledge_ about and be able:
-* Conduct fixed and random effects meta-analysis
-* Measure effect size 
-* Explore heterogeneity using sub-group and meta-regression analyses
-* Explore and address small study effects using funnel plot and trim and fill
 
+- Conduct fixed and random effects meta-analysis
+- Measure effect size
+- Explore heterogeneity using sub-group and meta-regression analyses
+- Explore and address small study effects using funnel plot and trim and fill
 
 STEPS in conducting **Generic Data** meta-analysis
 
@@ -23,82 +23,61 @@ STEPS in conducting **Generic Data** meta-analysis
 4. STEP 4- EXPLORE HETEROGENEITY - SUB-GROUP and META-REGRESSION analysis
 5. STEP 5- EXPLORE and ADDRESS SMALL-STUDY EFFECTS
 
-
-
 # Link to YouTube Video Lecture
 
 **Click the image below:**
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=bTNgi4bpMP0" target="_blank"><img src="http://img.youtube.com/vi/bTNgi4bpMP0/0.jpg" alt="04-Generic Data MetaAnalysis" width="1200" height="800" border="10" /></a>
 
-
-
 ## STEP 1 - LOAD DATA
 
-The meta command accepts effect sizes and confidence intervals, not just count data.  By specifying two variables after commands, you indicate to Stata that the variables represent effect sizes and standard error.
+The meta command accepts effect sizes and confidence intervals, not just count data. By specifying two variables after commands, you indicate to Stata that the variables represent effect sizes and standard error.
 
-Below are results from trials that examined effect of exercise on depression. 
-
+Below are results from trials that examined effect of exercise on depression.
 
 Contains data from Exercise for depression
-  
-* Id: ID no. of study
-* study: 		First author of study
-* smd:		Standardised mean difference
-* varsmd:	    Var(smd)
-* sesmd:		SE(smd)
-* abstract:	Published as abstract?
-* duration: 	Duration of follow-up (weeks)
-* itt:		Intention-to-treat analysis?
-* alloc:		Allocation concealment adequate?
-* Phd:		Published as PhD thesis?
 
+- Id: ID no. of study
+- study: First author of study
+- smd: Standardised mean difference
+- varsmd: Var(smd)
+- sesmd: SE(smd)
+- abstract: Published as abstract?
+- duration: Duration of follow-up (weeks)
+- itt: Intention-to-treat analysis?
+- alloc: Allocation concealment adequate?
+- Phd: Published as PhD thesis?
 
 **Option 1**
 Copy and paste from Excel (see attached exercise4deprsn.xlsx below)
-***
+
+---
 
 `edit`
 
 **Option 2**
 Input raw directly into Stata (using ‘do file editor’ type `doedit`)
 
-`clear all
-input id	str20 study	smd	varsmd	sesmd	abstract	duration	itt	alloc	phd
-1	Mutrie	-2.53	0.16	0.4	1	4	0	0	0
-2	McNeil	-1.07	0.1681	0.41	0	6	0	0	0
-3	Reuter	-2.1	0.16	0.4	1	10	0	0	0
-4	Doyne	-1.2	0.1849	0.43	0	8	0	0	0
-5	Hess-Homeier	-0.82	0.3249	0.57	0	8	0	0	1
-6	Epstein	-0.84	0.2116	0.46	0	8	0	0	1
-7	Martinsen	-1.16	0.0784	0.28	0	9	0	1	0
-8	Singh	-0.45	0.1156	0.34	0	10	1	1	0
-9	Klein	0.25	0.2601	0.51	0	12	0	0	0
-10	Veale	-0.53	0.0576	0.24	0	12	0	1	0
-end`
+`clear all input id str20 study smd varsmd sesmd abstract duration itt alloc phd 1 Mutrie -2.53 0.16 0.4 1 4 0 0 0 2 McNeil -1.07 0.1681 0.41 0 6 0 0 0 3 Reuter -2.1 0.16 0.4 1 10 0 0 0 4 Doyne -1.2 0.1849 0.43 0 8 0 0 0 5 Hess-Homeier -0.82 0.3249 0.57 0 8 0 0 1 6 Epstein -0.84 0.2116 0.46 0 8 0 0 1 7 Martinsen -1.16 0.0784 0.28 0 9 0 1 0 8 Singh -0.45 0.1156 0.34 0 10 1 1 0 9 Klein 0.25 0.2601 0.51 0 12 0 0 0 10 Veale -0.53 0.0576 0.24 0 12 0 1 0 end`
 
-***
-
-
-
+---
 
 **Option 3**
 Load Stata data file directly from Excel file
-***
 
+---
 
 ```python
 import excel  using data/exercise4deprsn.xlsx, firstrow clear
-describe 
+describe
 ```
 
-    
     (10 vars, 10 obs)
-    
-    
+
+
     Contains data
-      obs:            10                          
-     vars:            10                          
+      obs:            10
+     vars:            10
     --------------------------------------------------------------------------------
                   storage   display    value
     variable name   type    format     label      variable label
@@ -114,25 +93,23 @@ describe
     alloc           byte    %10.0g                alloc
     phd             byte    %10.0g                phd
     --------------------------------------------------------------------------------
-    Sorted by: 
+    Sorted by:
          Note: Dataset has changed since last saved.
 
 **Option 4**
 Load Stata data file directly (if already saved)
-***
 
-
+---
 
 ```python
 use data/exercise4deprsn.dta, clear
 
-describe 
+describe
 ```
 
-    
     (Excercise for depression)
-    
-    
+
+
     Contains data from data/exercise4deprsn.dta
       obs:            10                          Excercise for depression
      vars:            10                          11 Oct 2015 21:16
@@ -161,182 +138,131 @@ describe
 meta set smd sesmd, studylabel(study) eslabel(Std. Mean Diff.)
 ```
 
-    
     Meta-analysis setting information
-    
+
      Study information
         No. of studies:  10
            Study label:  study
             Study size:  N/A
-    
+
            Effect size
                   Type:  Generic
                  Label:  Std. Mean Diff.
               Variable:  smd
-    
+
              Precision
              Std. Err.:  sesmd
                     CI:  [_meta_cil, _meta_ciu]
               CI level:  95%
-    
+
       Model and method
                  Model:  Random-effects
                 Method:  REML
 
 ## STEP 3- SUMMARIZE meta data by using a TABLE or a FOREST PLOT
 
-*Now, combine the results of trials, using the fixed- and random effects model*
+_Now, combine the results of trials, using the fixed- and random effects model_
 
-***
+---
 
-> *Q2.1 - What are the summary estimates and 95% CI for both fixed and random-effects*
+> _Q2.1 - What are the summary estimates and 95% CI for both fixed and random-effects_
 
-> *Q2.2 - Are the results homogenous?*
+> _Q2.2 - Are the results homogenous?_
 
-***
-
+---
 
 ```python
 meta forestplot, nullrefline fixed
 graph display
 ```
 
-    
-    
       Effect-size label:  Std. Mean Diff.
             Effect size:  smd
               Std. Err.:  sesmd
             Study label:  study
 
-
-<img src="/assets/images/04_GenericData_12_1.svg"  width="1200" height="800">
-
-
-    
-
+<img src="./assets/images/04_GenericData_12_1.svg"  width="1200" height="800">
 
 ```python
 meta forestplot, nullrefline random
 graph display
 ```
 
-    
-    
       Effect-size label:  Std. Mean Diff.
             Effect size:  smd
               Std. Err.:  sesmd
             Study label:  study
 
-
-<img src="/assets/images/04_GenericData_13_1.svg"  width="1200" height="800">
-
-
-    
-    
-
+<img src="./assets/images/04_GenericData_13_1.svg"  width="1200" height="800">
 
 ## STEP 4- EXPLORE HETEROGENEITY - SUB-GROUP and META-REGRESSION analysis
 
-*Examine the pooled estimates differ according to following study characteristics:*
+_Examine the pooled estimates differ according to following study characteristics:_
 
-* Publication type
-* Intention to treat analysis
-* Allocation concealment
-* Published as PhD thesis or not
+- Publication type
+- Intention to treat analysis
+- Allocation concealment
+- Published as PhD thesis or not
 
 ```python
 meta forestplot, nullrefline random subgroup(abstract)
 graph display
 ```
 
-    
-    
       Effect-size label:  Std. Mean Diff.
             Effect size:  smd
               Std. Err.:  sesmd
             Study label:  study
 
-
-<img src="/assets/images/04_GenericData_15_1.svg"  width="1200" height="800">
-
-
-    
-    
-
+<img src="./assets/images/04_GenericData_15_1.svg"  width="1200" height="800">
 
 ```python
 meta forestplot, nullrefline random subgroup(itt)
 graph display
 ```
 
-    
-    
       Effect-size label:  Std. Mean Diff.
             Effect size:  smd
               Std. Err.:  sesmd
             Study label:  study
 
-
-<img src="/assets/images/04_GenericData_16_1.svg"  width="1200" height="800">
-
-
-    
-    
-
+<img src="./assets/images/04_GenericData_16_1.svg"  width="1200" height="800">
 
 ```python
 meta forestplot, nullrefline random subgroup(alloc)
 graph display
 ```
 
-    
-    
       Effect-size label:  Std. Mean Diff.
             Effect size:  smd
               Std. Err.:  sesmd
             Study label:  study
 
-
-<img src="/assets/images/04_GenericData_17_1.svg"  width="1200" height="800">
-
-
-    
-    
-
+<img src="./assets/images/04_GenericData_17_1.svg"  width="1200" height="800">
 
 ```python
 meta forestplot, nullrefline random subgroup(phd)
 graph display
 ```
 
-    
-    
       Effect-size label:  Std. Mean Diff.
             Effect size:  smd
               Std. Err.:  sesmd
             Study label:  study
 
-
-<img src="/assets/images/04_GenericData_18_1.svg"  width="1200" height="800">
-
-
-    
-    
-
+<img src="./assets/images/04_GenericData_18_1.svg"  width="1200" height="800">
 
 ### Univariable meta-regression
 
+Fit a meta-regression model that explains the heterogeneity in terms of study-level covariates.
 
+---
 
-Fit a meta-regression model that explains the heterogeneity in terms of study-level covariates. 
- 
-*** 
-> *Q2.3 - Which study level covariates are significant?*
+> _Q2.3 - Which study level covariates are significant?_
 
-> *Q2.4 - What percentage of heterogeneity is explained for these covariates?*
+> _Q2.4 - What percentage of heterogeneity is explained for these covariates?_
 
-***
-
+---
 
 ```python
 meta regress abstract
@@ -348,12 +274,10 @@ meta regress alloc
 meta regress phd
 ```
 
-    
-    
       Effect-size label:  Std. Mean Diff.
             Effect size:  smd
               Std. Err.:  sesmd
-    
+
     Random-effects meta-regression                      Number of obs  =        10
     Method: REML                                        Residual heterogeneity:
                                                                     tau2 =  .03269
@@ -369,12 +293,12 @@ meta regress phd
            _cons |   -.750891   .1463283    -5.13   0.000    -1.037689   -.4640929
     ------------------------------------------------------------------------------
     Test of residual homogeneity: Q_res = chi2(8) =  9.94    Prob > Q_res = 0.2690
-    
-    
+
+
       Effect-size label:  Std. Mean Diff.
             Effect size:  smd
               Std. Err.:  sesmd
-    
+
     Random-effects meta-regression                      Number of obs  =        10
     Method: REML                                        Residual heterogeneity:
                                                                     tau2 =   .2019
@@ -391,19 +315,12 @@ meta regress phd
     ------------------------------------------------------------------------------
     Test of residual homogeneity: Q_res = chi2(8) = 18.11    Prob > Q_res = 0.0204
 
+<img src="./assets/images/04_GenericData_20_1.svg"  width="1200" height="800">
 
-<img src="/assets/images/04_GenericData_20_1.svg"  width="1200" height="800">
-
-
-    
-    
-    
-    
-    
       Effect-size label:  Std. Mean Diff.
             Effect size:  smd
               Std. Err.:  sesmd
-    
+
     Random-effects meta-regression                      Number of obs  =        10
     Method: REML                                        Residual heterogeneity:
                                                                     tau2 =   .4719
@@ -419,12 +336,12 @@ meta regress phd
            _cons |  -1.129017   .2668869    -4.23   0.000    -1.652105    -.605928
     ------------------------------------------------------------------------------
     Test of residual homogeneity: Q_res = chi2(8) = 32.33    Prob > Q_res = 0.0001
-    
-    
+
+
       Effect-size label:  Std. Mean Diff.
             Effect size:  smd
               Std. Err.:  sesmd
-    
+
     Random-effects meta-regression                      Number of obs  =        10
     Method: REML                                        Residual heterogeneity:
                                                                     tau2 =   .4383
@@ -440,12 +357,12 @@ meta regress phd
            _cons |  -1.235379   .3032112    -4.07   0.000    -1.829662   -.6410955
     ------------------------------------------------------------------------------
     Test of residual homogeneity: Q_res = chi2(8) = 28.46    Prob > Q_res = 0.0004
-    
-    
+
+
       Effect-size label:  Std. Mean Diff.
             Effect size:  smd
               Std. Err.:  sesmd
-    
+
     Random-effects meta-regression                      Number of obs  =        10
     Method: REML                                        Residual heterogeneity:
                                                                     tau2 =   .5089
@@ -468,12 +385,10 @@ foreach factor of varlist abstract duration itt alloc phd {
 }
 ```
 
-    
-    
       Effect-size label:  Std. Mean Diff.
             Effect size:  smd
               Std. Err.:  sesmd
-    
+
     Random-effects meta-regression                      Number of obs  =        10
     Method: REML                                        Residual heterogeneity:
                                                                     tau2 =  .03269
@@ -489,11 +404,11 @@ foreach factor of varlist abstract duration itt alloc phd {
            _cons |   -.750891   .1463283    -5.13   0.000    -1.037689   -.4640929
     ------------------------------------------------------------------------------
     Test of residual homogeneity: Q_res = chi2(8) =  9.94    Prob > Q_res = 0.2690
-    
+
       Effect-size label:  Std. Mean Diff.
             Effect size:  smd
               Std. Err.:  sesmd
-    
+
     Random-effects meta-regression                      Number of obs  =        10
     Method: REML                                        Residual heterogeneity:
                                                                     tau2 =   .2019
@@ -509,11 +424,11 @@ foreach factor of varlist abstract duration itt alloc phd {
            _cons |  -2.907511   .7239578    -4.02   0.000    -4.326442    -1.48858
     ------------------------------------------------------------------------------
     Test of residual homogeneity: Q_res = chi2(8) = 18.11    Prob > Q_res = 0.0204
-    
+
       Effect-size label:  Std. Mean Diff.
             Effect size:  smd
               Std. Err.:  sesmd
-    
+
     Random-effects meta-regression                      Number of obs  =        10
     Method: REML                                        Residual heterogeneity:
                                                                     tau2 =   .4719
@@ -529,11 +444,11 @@ foreach factor of varlist abstract duration itt alloc phd {
            _cons |  -1.129017   .2668869    -4.23   0.000    -1.652105    -.605928
     ------------------------------------------------------------------------------
     Test of residual homogeneity: Q_res = chi2(8) = 32.33    Prob > Q_res = 0.0001
-    
+
       Effect-size label:  Std. Mean Diff.
             Effect size:  smd
               Std. Err.:  sesmd
-    
+
     Random-effects meta-regression                      Number of obs  =        10
     Method: REML                                        Residual heterogeneity:
                                                                     tau2 =   .4383
@@ -549,11 +464,11 @@ foreach factor of varlist abstract duration itt alloc phd {
            _cons |  -1.235379   .3032112    -4.07   0.000    -1.829662   -.6410955
     ------------------------------------------------------------------------------
     Test of residual homogeneity: Q_res = chi2(8) = 28.46    Prob > Q_res = 0.0004
-    
+
       Effect-size label:  Std. Mean Diff.
             Effect size:  smd
               Std. Err.:  sesmd
-    
+
     Random-effects meta-regression                      Number of obs  =        10
     Method: REML                                        Residual heterogeneity:
                                                                     tau2 =   .5089
@@ -576,11 +491,10 @@ foreach factor of varlist abstract duration itt alloc phd {
 meta regress abstract duration
 ```
 
-    
       Effect-size label:  Std. Mean Diff.
             Effect size:  smd
               Std. Err.:  sesmd
-    
+
     Random-effects meta-regression                      Number of obs  =        10
     Method: REML                                        Residual heterogeneity:
                                                                     tau2 = 5.3e-08
@@ -600,45 +514,37 @@ meta regress abstract duration
 
 ## STEP 5- EXPLORE and ADDRESS SMALL-STUDY EFFECTS
 
-***
+---
 
-> *Q2.5 - Examine whether there is evidence of publication bias?*
+> _Q2.5 - Examine whether there is evidence of publication bias?_
 
-***
+---
 
 ```python
 meta funnelplot, metric(invse)
 graph display
 ```
 
-    
-    
       Effect-size label:  Std. Mean Diff.
             Effect size:  smd
               Std. Err.:  sesmd
                   Model:  Common-effect
                  Method:  Inverse-variance
 
-
-<img src="/assets/images/04_GenericData_25_1.svg"  width="1200" height="800">
-
-
-    
-
+<img src="./assets/images/04_GenericData_25_1.svg"  width="1200" height="800">
 
 ```python
 meta bias, egger
 ```
 
-    
       Effect-size label:  Std. Mean Diff.
             Effect size:  smd
               Std. Err.:  sesmd
-    
+
     Regression-based Egger test for small-study effects
     Random-effects model
     Method: REML
-    
+
     H0: beta1 = 0; no small-study effects
                 beta1 =      0.48
           SE of beta1 =     2.804
@@ -649,22 +555,21 @@ meta bias, egger
 meta trimfill
 ```
 
-    
       Effect-size label:  Std. Mean Diff.
             Effect size:  smd
               Std. Err.:  sesmd
-    
+
     Nonparametric trim-and-fill analysis of publication bias
     Linear estimator, imputing on the right
-    
+
     Iteration                            Number of studies =     10
       Model: Random-effects                       observed =     10
      Method: REML                                  imputed =      0
-    
+
     Pooling
       Model: Random-effects
      Method: REML
-    
+
     ---------------------------------------------------------------
                  Studies |  Std. Mean Diff.    [95% Conf. Interval]
     ---------------------+-----------------------------------------
@@ -672,8 +577,7 @@ meta trimfill
       Observed + Imputed |           -1.056      -1.541      -0.570
     ---------------------------------------------------------------
 
-# GENERIC DATA 
-
+# GENERIC DATA
 
 STEPS in conducting **Generic Data** meta-analysis
 
@@ -682,4 +586,3 @@ STEPS in conducting **Generic Data** meta-analysis
 3. STEP 3 - SUMMARIZE meta data by using a TABLE or a FOREST PLOT
 4. STEP 4- EXPLORE HETEROGENEITY - SUB-GROUP and META-REGRESSION analysis
 5. STEP 5- EXPLORE and ADDRESS SMALL-STUDY EFFECTS
-

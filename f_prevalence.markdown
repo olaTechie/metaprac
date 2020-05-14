@@ -9,21 +9,19 @@ title: Prevalence meta
 **Learning outcomes**:
 
 You will have _knowledge_ about and be able:
-* Conduct fixed and random effects meta-analysis
-* Measure effect size HETEROGENEITY
-* Explore heterogeneity using sub-group and meta-regression analyses
-* Explore and address small study effects using funnel plot and trim and fill
 
+- Conduct fixed and random effects meta-analysis
+- Measure effect size HETEROGENEITY
+- Explore heterogeneity using sub-group and meta-regression analyses
+- Explore and address small study effects using funnel plot and trim and fill
 
-STEPS in conducting **Prevalence Data** 
+STEPS in conducting **Prevalence Data**
 
 1. STEP 1 - LOAD DATA
 2. STEP 2 - DECLARE, UPDATE & DESCRIBE meta data
 3. STEP 3 - SUMMARIZE meta data by using a TABLE or a FOREST PLOT
 4. STEP 4- EXPLORE HETEROGENEITY - SUB-GROUP and META-REGRESSION analysis
 5. STEP 5- EXPLORE and ADDRESS SMALL-STUDY EFFECTS
-
-
 
 # Link to YouTube Video Lecture
 
@@ -33,37 +31,33 @@ STEPS in conducting **Prevalence Data**
 
 ## STEP 1 - LOAD DATA
 
-*The data is from a meta-analysis that estimated the prevalence of underlying disorders in hospitalized COVID-19 patients*
+_The data is from a meta-analysis that estimated the prevalence of underlying disorders in hospitalized COVID-19 patients_
 
 ```python
 use data/covid-premorb.dta, clear
 
-describe 
+describe
 ```
 
-    
-    
-    
     Contains data from data/covid-premorb.dta
-      obs:            40                          
+      obs:            40
      vars:             5                          10 May 2020 11:34
     --------------------------------------------------------------------------------
                   storage   display    value
     variable name   type    format     label      variable label
     --------------------------------------------------------------------------------
-    study           str26   %-9s                  
-    morb            long    %12.0g     morb       
-    r               double  %10.0g                
-    n               double  %10.0g                
-    male            double  %10.0g                
+    study           str26   %-9s
+    morb            long    %12.0g     morb
+    r               double  %10.0g
+    n               double  %10.0g
+    male            double  %10.0g
     --------------------------------------------------------------------------------
-    Sorted by: 
+    Sorted by:
 
 ```python
 tab morb
 ```
 
-    
            morb |      Freq.     Percent        Cum.
     ------------+-----------------------------------
             CKD |          7       17.50       17.50
@@ -77,7 +71,7 @@ tab morb
 
 ## STEP 2- DECLARE, UPDATE & DESCRIBE meta data
 
-*Not applicable initially*
+_Not applicable initially_
 
 ## STEP 3- SUMMARIZE meta data by using a TABLE or a FOREST PLOT
 
@@ -86,46 +80,37 @@ metaprop r n, ftt random notable
 graph display
 ```
 
-
-<img src="/assets/images/06_PrevalenceData_8_0.svg"  width="1200" height="800">
-
+<img src="./assets/images/06_PrevalenceData_8_0.svg"  width="1200" height="800">
 
 ```python
 metaprop r n, ftt random label(namevar=study)  notable
 graph display
 ```
 
-
-<img src="/assets/images/06_PrevalenceData_9_0.svg"  width="1200" height="800">
-
+<img src="./assets/images/06_PrevalenceData_9_0.svg"  width="1200" height="800">
 
 ```python
 metaprop r n, ftt random notable label(namevar=study) power(2)
 graph display
 ```
 
-
-<img src="/assets/images/06_PrevalenceData_10_0.svg"  width="1200" height="800">
-
+<img src="./assets/images/06_PrevalenceData_10_0.svg"  width="1200" height="800">
 
 ## STEP 4- EXPLORE HETEROGENEITY - SUB-GROUP and META-REGRESSION analysis
 
-***
+---
 
-> *Q4.1 - What is the commonest pre-morb condition?*
+> _Q4.1 - What is the commonest pre-morb condition?_
 
-> *Q4.2 - What is the least common pre-mord condition?*
+> _Q4.2 - What is the least common pre-mord condition?_
 
-
-***
+---
 
 ```python
-metaprop r n, ftt random label(namevar=study) power(2) by(morb) 
+metaprop r n, ftt random label(namevar=study) power(2) by(morb)
 graph di
 ```
 
-    
-    
                Study     |      ES       [95% Conf. Interval]  % Weight
     ---------------------+---------------------------------------------------
          CKD
@@ -192,10 +177,10 @@ graph di
      Sub-total           |
       Random pooled  ES  |       12.11      4.40        22.75       20.24
     ---------------------+---------------------------------------------------
-    Overall              |           
+    Overall              |
       Random pooled  ES  |        6.83      4.52         9.54      100.00
     ---------------------+---------------------------------------------------
-    
+
     Test(s) of heterogeneity:
                    Heterogeneity  degrees of
                      statistic     freedom            P       I^2**
@@ -207,85 +192,78 @@ graph di
     CVD                    170.42      7            0.00     95.89%
     Overall                908.00     39            0.00     95.70%
     ** I^2: the variation in ES attributable to heterogeneity)
-    
-    
-    Random: Test for heterogeneity between sub-groups: 
+
+
+    Random: Test for heterogeneity between sub-groups:
                             79.93      5            0.00
-    
+
     Significance test(s) of  ES=0
-    
-    CKD                   z= 2.72       p = 0.01      
-    HTN                   z= 7.89       p = 0.00      
-    DM                    z= 8.95       p = 0.00      
-    Mal                   z= 4.49       p = 0.00      
-    COPD                  z= 5.21       p = 0.00      
-    CVD                   z= 4.37       p = 0.00      
-    Overall               z= 8.99       p = 0.00      
+
+    CKD                   z= 2.72       p = 0.01
+    HTN                   z= 7.89       p = 0.00
+    DM                    z= 8.95       p = 0.00
+    Mal                   z= 4.49       p = 0.00
+    COPD                  z= 5.21       p = 0.00
+    CVD                   z= 4.37       p = 0.00
+    Overall               z= 8.99       p = 0.00
     -------------------------------------------------------------------------
 
+<img src="./assets/images/06_PrevalenceData_12_1.svg"  width="1200" height="800">
 
-<img src="/assets/images/06_PrevalenceData_12_1.svg"  width="1200" height="800">
+---
 
+> _Q4.3 - Is there is correlation between the prevalence estimates and % males_
 
-    
+> _Q4.4 - Are smaller studies tended to have reported over reported the prevalence estimates_
 
-
-***
-
-> *Q4.3 - Is there is correlation between the prevalence estimates and % males*
-
-> *Q4.4 - Are smaller studies tended to have reported over reported the prevalence estimates*
-
-***
+---
 
 ```python
 d
 ```
 
-    
     Contains data from data/covid-premorb.dta
-      obs:            40                          
+      obs:            40
      vars:            10                          10 May 2020 11:34
     --------------------------------------------------------------------------------
                   storage   display    value
     variable name   type    format     label      variable label
     --------------------------------------------------------------------------------
-    study           str26   %-9s                  
-    morb            long    %12.0g     morb       
-    r               double  %10.0g                
-    n               double  %10.0g                
-    male            double  %10.0g                
+    study           str26   %-9s
+    morb            long    %12.0g     morb
+    r               double  %10.0g
+    n               double  %10.0g
+    male            double  %10.0g
     _ES             float   %9.0g                 ES
     _seES           float   %9.0g                 se(ES)
     _LCI            float   %9.0g                 Lower CI (ES)
     _UCI            float   %9.0g                 Upper CI (ES)
     _WT             float   %9.0g                 Random weight
     --------------------------------------------------------------------------------
-    Sorted by: 
+    Sorted by:
 
 ```python
 * STEP 2- DECLARE, UPDATE & DESCRIBE meta data
 meta set _ES _seES, studylabel(study) eslabel(Premorb. Prevalence.)
 ```
 
-    
     Meta-analysis setting information
-    
+
      Study information
         No. of studies:  40
            Study label:  study
             Study size:  N/A
-    
+
            Effect size
                   Type:  Generic
                  Label:  Premorb. Prevalence.
               Variable:  _ES
-    
+
              Precision
              Std. Err.:  _seES
                     CI:  [_meta_cil, _meta_ciu]
               CI level:  95%
-    
+
       Model and method
                  Model:  Random-effects
                 Method:  REML
@@ -296,12 +274,10 @@ estat bubbleplot
 graph di
 ```
 
-    
-    
       Effect-size label:  Premorb. Prevalence.
             Effect size:  _ES
               Std. Err.:  _seES
-    
+
     Random-effects meta-regression                      Number of obs  =        39
     Method: REML                                        Residual heterogeneity:
                                                                     tau2 = .003317
@@ -318,13 +294,7 @@ graph di
     ------------------------------------------------------------------------------
     Test of residual homogeneity: Q_res = chi2(37) = 62.24   Prob > Q_res = 0.0058
 
-
-<img src="/assets/images/06_PrevalenceData_16_1.svg"  width="1200" height="800">
-
-
-    
-    
-
+<img src="./assets/images/06_PrevalenceData_16_1.svg"  width="1200" height="800">
 
 ```python
 meta regress n
@@ -332,12 +302,10 @@ estat bubbleplot
 graph di
 ```
 
-    
-    
       Effect-size label:  Premorb. Prevalence.
             Effect size:  _ES
               Std. Err.:  _seES
-    
+
     Random-effects meta-regression                      Number of obs  =        40
     Method: REML                                        Residual heterogeneity:
                                                                     tau2 = .002014
@@ -354,13 +322,7 @@ graph di
     ------------------------------------------------------------------------------
     Test of residual homogeneity: Q_res = chi2(38) = 55.54   Prob > Q_res = 0.0329
 
-
-<img src="/assets/images/06_PrevalenceData_17_1.svg"  width="1200" height="800">
-
-
-    
-    
-
+<img src="./assets/images/06_PrevalenceData_17_1.svg"  width="1200" height="800">
 
 ## STEP 5- EXPLORE and ADDRESS SMALL-STUDY EFFECTS
 
@@ -369,34 +331,26 @@ meta funnelplot, metric(invse)
 graph display
 ```
 
-    
-    
       Effect-size label:  Premorb. Prevalence.
             Effect size:  _ES
               Std. Err.:  _seES
                   Model:  Common-effect
                  Method:  Inverse-variance
 
-
-<img src="/assets/images/06_PrevalenceData_19_1.svg"  width="1200" height="800">
-
-
-    
-
+<img src="./assets/images/06_PrevalenceData_19_1.svg"  width="1200" height="800">
 
 ```python
 meta bias, egger
 ```
 
-    
       Effect-size label:  Premorb. Prevalence.
             Effect size:  _ES
               Std. Err.:  _seES
-    
+
     Regression-based Egger test for small-study effects
     Random-effects model
     Method: REML
-    
+
     H0: beta1 = 0; no small-study effects
                 beta1 =      0.72
           SE of beta1 =     0.353
@@ -407,22 +361,21 @@ meta bias, egger
 meta trimfill
 ```
 
-    
       Effect-size label:  Premorb. Prevalence.
             Effect size:  _ES
               Std. Err.:  _seES
-    
+
     Nonparametric trim-and-fill analysis of publication bias
     Linear estimator, imputing on the left
-    
+
     Iteration                            Number of studies =     40
       Model: Random-effects                       observed =     40
      Method: REML                                  imputed =      0
-    
+
     Pooling
       Model: Random-effects
      Method: REML
-    
+
                     theta: Overall Premorb. Prevalence.
     ---------------------------------------------------------------
                  Studies |            theta    [95% Conf. Interval]
@@ -433,14 +386,10 @@ meta trimfill
 
 # PREVALENCE OR PROPORTION DATA
 
-
-
-STEPS in conducting **Prevalence Data** 
+STEPS in conducting **Prevalence Data**
 
 1. STEP 1 - LOAD DATA
 2. STEP 2 - DECLARE, UPDATE & DESCRIBE meta data
 3. STEP 3 - SUMMARIZE meta data by using a TABLE or a FOREST PLOT
 4. STEP 4- EXPLORE HETEROGENEITY - SUB-GROUP and META-REGRESSION analysis
 5. STEP 5- EXPLORE and ADDRESS SMALL-STUDY EFFECTS
-
-

@@ -12,80 +12,86 @@ title: Intro Stata
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=DEaazFGU-p8" target="_blank"><img src="http://img.youtube.com/vi/DEaazFGU-p8/0.jpg" alt="02-Introduction Stata" width="1200" height="800" border="10" /></a>
 
-
 ## Materials and setup
-Laptop users: you will need a copy of Stata installed on your machine. 
-* You can install a licensed version from https://warwick.ac.uk/services/its/servicessupport/software/list/stata
-* Find class materials at <a href="../assets/PracMaterials.zip" download>Click to Download</a>
-* Download and extract to your desktop or any folder of your choice!
 
-##  Section descripton
-* This is an introduction to Stata
-* Assumes no/very little knowledge of Stata
-* Not appropriate for people already well familiar with Stata
-* Learning Objectives:
-    * Familiarize yourself with the Stata interface
-    * Get data in and out of Stata
-    * Compute statistics and construct graphical displays
-    * Compute new variables and transformations
+Laptop users: you will need a copy of Stata installed on your machine.
+
+- You can install a licensed version from https://warwick.ac.uk/services/its/servicessupport/software/list/stata
+- Find class materials at <a href="../assets/PracMaterials.zip" download>Click to Download</a>
+- Download and extract to your desktop or any folder of your choice!
+
+## Section descripton
+
+- This is an introduction to Stata
+- Assumes no/very little knowledge of Stata
+- Not appropriate for people already well familiar with Stata
+- Learning Objectives:
+  - Familiarize yourself with the Stata interface
+  - Get data in and out of Stata
+  - Compute statistics and construct graphical displays
+  - Compute new variables and transformations
 
 ## Why stata?
-* Used in a variety of disciplines
-* User-friendly
-* Great guides available on web 
-* Freely available - Warwick Staff & Students
+
+- Used in a variety of disciplines
+- User-friendly
+- Great guides available on web
+- Freely available - Warwick Staff & Students
 
 ## Stata interface
-![](/assets/images/intro_stata.jpeg)
 
+![](/assets/images/intro_stata.jpeg)
 
 ![](/assets/images/onepage.jpeg)
 
 ## Do-files
-* You can type all the same commands into the Do-file that you would type into the command window
-* BUT...the Do-file allows you to save your commands
-* Your Do-file should contain ALL commands you executed -- at least all the "correct" commands!
-* I recommend never using the command window or menus to make CHANGES to data
-* Saving commands in Do-file allows you to keep a written record of everything you have done to your data
-    * Allows easy replication
-    * Allows you to go back and re-run commands, analyses and make modifications
 
+- You can type all the same commands into the Do-file that you would type into the command window
+- BUT...the Do-file allows you to save your commands
+- Your Do-file should contain ALL commands you executed -- at least all the "correct" commands!
+- I recommend never using the command window or menus to make CHANGES to data
+- Saving commands in Do-file allows you to keep a written record of everything you have done to your data
+  - Allows easy replication
+  - Allows you to go back and re-run commands, analyses and make modifications
 
 ## Stata help
+
 To get help in Stata type help followed by topic or command, e.g., help meta.
 
-
 ## General Stata command syntax
+
 Most Stata commands follow the same basic syntax: Command varlist, options
 
-
 ## Commenting and formatting syntax
+
 Start with comment describing your Do-file and use comments throughout
 
-* Use '*' to comment a line and '//' for in-line comments
+- Use '\*' to comment a line and '//' for in-line comments
 
-* Make Stata say hello:
-`disp "Hello " "World!" // 'disp' is short for 'display'`
-
+- Make Stata say hello:
+  `disp "Hello " "World!" // 'disp' is short for 'display'`
 
 * Use /// to break varlists over multiple lines:
 
-`disp "Hello" ///
-     " World!"`
+`disp "Hello" /// " World!"`
 
 ## Let's get started
-* Launch the Stata program 
-    * Open up a new Do-file
-    * Run our first Stata code
 
-* change directory
+- Launch the Stata program
+
+  - Open up a new Do-file
+  - Run our first Stata code
+
+- change directory
 
 `// cd "C://Users/Desktop/StataIntro"`
 
 # Getting data into Stata
+
 ## Data file commands
-* Next, we want to open our data file
-* Open/save data sets with "use" and "save":
+
+- Next, we want to open our data file
+- Open/save data sets with "use" and "save":
 
 ```python
 cd data/
@@ -97,45 +103,44 @@ use covid-data.dta, clear
 save new-covid-data.dta, replace // "replace" option means OK to overwrite existing file
 ```
 
-    
     /Users/uthlekan/Dropbox/00Todo/000.aurgent/Lecture2/notebook2/data
-    
-    
+
+
     file new-covid-data.dta saved
 
 ## A note about path names
-* If your path has no spaces in the name (that means all directories, folders, file names, etc. can have no spaces), you can write the path as is
-* If there are spaces, you need to put your pathname in quotes
-* Best to get in the habit of quoting paths
+
+- If your path has no spaces in the name (that means all directories, folders, file names, etc. can have no spaces), you can write the path as is
+- If there are spaces, you need to put your pathname in quotes
+- Best to get in the habit of quoting paths
 
 ## What if my data is not a Stata file?
 
+- import data from a .csv file
 
-* import data from a .csv file
-
-    * `import delimited data/covid-data.csv, clear`
-
+  - `import delimited data/covid-data.csv, clear`
 
 * Import data from Excel
 
-    * `import excel using data/covid-data.xlsx, clear firstrow`
+  - `import excel using data/covid-data.xlsx, clear firstrow`
 
 # Statistics and graphs
+
 ## Frequently used commands
-* Commands for reviewing and inspecting data:
-    * describe // labels, storage type etc.
-    * sum // statistical summary (mean, sd, min/max etc.)
-    * codebook // storage type, unique values, labels
-    * list // print actuall values
-    * tab // (cross) tabulate variables
-    * browse // view the data in a spreadsheet-like window
-* Examples
+
+- Commands for reviewing and inspecting data:
+  - describe // labels, storage type etc.
+  - sum // statistical summary (mean, sd, min/max etc.)
+  - codebook // storage type, unique values, labels
+  - list // print actuall values
+  - tab // (cross) tabulate variables
+  - browse // view the data in a spreadsheet-like window
+- Examples
 
 ```python
-summarize // statistical summary 
+summarize // statistical summary
 ```
 
-    
         Variable |        Obs        Mean    Std. Dev.       Min        Max
     -------------+---------------------------------------------------------
         iso_code |          0
@@ -162,42 +167,40 @@ summarize // statistical summary
 codebook total_cases location // information about how total_cases & location are coded
 ```
 
-    
     --------------------------------------------------------------------------------
     total_cases                                                          (unlabeled)
     --------------------------------------------------------------------------------
-    
+
                       type:  numeric (long)
-    
+
                      range:  [0,3898658]                  units:  1
              unique values:  3,998                    missing .:  0/16,168
-    
+
                       mean:     12537
                   std. dev:    131872
-    
+
                percentiles:        10%       25%       50%       75%       90%
                                      0         2        51       717      6879
-    
+
     --------------------------------------------------------------------------------
     location                                                             (unlabeled)
     --------------------------------------------------------------------------------
-    
+
                       type:  string (str32)
-    
+
              unique values:  211                      missing "":  0/16,168
-    
+
                   examples:  "Colombia"
                              "Hungary"
                              "Mexico"
                              "Seychelles"
-    
+
                    warning:  variable has embedded blanks
 
 ```python
 tab location // numbers of location
 ```
 
-    
                             location |      Freq.     Percent        Cum.
     ---------------------------------+-----------------------------------
                          Afghanistan |        121        0.75        0.75
@@ -300,7 +303,8 @@ tab location // numbers of location
     --more--
 
 ## Basic graphing commands
-* Univariate distribution(s) using hist
+
+- Univariate distribution(s) using hist
 
 ```python
 /* Histograms */
@@ -309,11 +313,7 @@ hist new_tests_per_thousand
 
     (bin=35, start=0, width=.20814285)
 
-
-<img src="/assets/images/02_IntroStata_19_1.svg"  width="1200" height="800">
-
-
-    
+<img src="./assets/images/02_IntroStata_19_1.svg"  width="1200" height="800">
 
 ```python
 // histogram with normal curve; see 'help hist' for other options
@@ -322,40 +322,31 @@ hist new_tests_per_thousand
 
     (bin=35, start=0, width=.20814285)
 
-
-<img src="/assets/images/02_IntroStata_20_1.svg"  width="1200" height="800">
-
-
-    
+<img src="./assets/images/02_IntroStata_20_1.svg"  width="1200" height="800">
 
 ```python
 gladder new_tests_per_thousand
 ```
 
-
-<img src="/assets/images/02_IntroStata_21_0.svg"  width="1200" height="800">
-
+<img src="./assets/images/02_IntroStata_21_0.svg"  width="1200" height="800">
 
 ```python
 /* scatterplots */
    twoway (scatter new_cases new_deaths)
 ```
 
-
-<img src="/assets/images/02_IntroStata_22_0.svg"  width="1200" height="800">
-
+<img src="./assets/images/02_IntroStata_22_0.svg"  width="1200" height="800">
 
 ```python
 graph matrix new_cases new_deaths new_tests
 ```
 
-
-<img src="/assets/images/02_IntroStata_23_0.svg"  width="1200" height="800">
-
+<img src="./assets/images/02_IntroStata_23_0.svg"  width="1200" height="800">
 
 ## Working on subsets
-* It is often useful to select just those rows of your data where some condition holds--for example select only rows where sex is 1 (male)
-* The following operators allow you to do this:
+
+- It is often useful to select just those rows of your data where some condition holds--for example select only rows where sex is 1 (male)
+- The following operators allow you to do this:
 
 | Operator | Meaning                  |
 | -------- | ------------------------ |
@@ -368,13 +359,11 @@ graph matrix new_cases new_deaths new_tests
 | &        | and                      |
 | \|       | or                       |
 
-
-
-* Note the double equals signs for testing equality
-
+- Note the double equals signs for testing equality
 
 ## Generating and replacing variables
-* Create new variables using "gen"
+
+- Create new variables using "gen"
 
 ```python
 // create a new variable named mc_inc
@@ -384,9 +373,6 @@ tab small_cases
 
 ```
 
-    
-    
-    
     small_cases |      Freq.     Percent        Cum.
     ------------+-----------------------------------
               0 |        808        5.00        5.00
@@ -397,19 +383,18 @@ tab small_cases
 ```python
 // categorical variable
 
-recode new_cases /// 
- (min / 999 = 1 "Very small number cases") /// 
- (1000/9999 = 2 "Small number of cases")  /// 
- (10000 / max = 3 "Very high number of cases"),  /// 
+recode new_cases ///
+ (min / 999 = 1 "Very small number cases") ///
+ (1000/9999 = 2 "Small number of cases")  ///
+ (10000 / max = 3 "Very high number of cases"),  ///
  gen(cases_cat)
 
 tab cases_cat
 ```
 
-    
     (15205 differences between new_cases and cases_cat)
-    
-    
+
+
           RECODE of new_cases |      Freq.     Percent        Cum.
     --------------------------+-----------------------------------
       Very small number cases |     15,360       95.00       95.00
@@ -419,37 +404,42 @@ tab cases_cat
                         Total |     16,168      100.00
 
 ## Exercise 4: Manipulating variables
-* Use the dataset, covid-data.dta
-* Generate a new variable, high_deaths  greater than 1000 
-* Generate a new "deaths_cate" variable that will take on a value of "1" if number of total deaths < 1000; 2 between 1000 and 9999 and 3 greater than 10000 
 
+- Use the dataset, covid-data.dta
+- Generate a new variable, high_deaths greater than 1000
+- Generate a new "deaths_cate" variable that will take on a value of "1" if number of total deaths < 1000; 2 between 1000 and 9999 and 3 greater than 10000
 
 # Wrap-up
 
 ## Stata cheat sheets
 
 ### Basic Processing
-* Fundamental commands in Stata to import, explore, summarize, and create new variables
-![](/assets/images/basic.jpeg)
+
+- Fundamental commands in Stata to import, explore, summarize, and create new variables
+  ![](/assets/images/basic.jpeg)
 
 ### Data Transformation
-* Selecting portions of datasets, replacing and labeling data, reshaping, merging, string manipulation, and saving
-![](/assets/images/transform.jpeg)
+
+- Selecting portions of datasets, replacing and labeling data, reshaping, merging, string manipulation, and saving
+  ![](/assets/images/transform.jpeg)
 
 ### Creating Data Visualizations
-* Syntax and arguments for plotting functions
-![](/assets/images/viz.jpeg)
+
+- Syntax and arguments for plotting functions
+  ![](/assets/images/viz.jpeg)
 
 ### Customizing Data Visualizations
-* Options to change the appearance of plots
-![](/assets/images/plot.jpeg)
+
+- Options to change the appearance of plots
+  ![](/assets/images/plot.jpeg)
 
 ### Data Analysis
-* Summarize data, declare data, conduct statistical tests, and estimate models
-![](/assets/images/data.jpeg)
+
+- Summarize data, declare data, conduct statistical tests, and estimate models
+  ![](/assets/images/data.jpeg)
 
 ## Additional resources
-* [UCLA Statistical computing](https://stats.idre.ucla.edu/stata/)
-* [Resources for learning Stata](https://www.stata.com/links/resources-for-learning-stata/)
-* [Stata cheat sheets](https://geocenter.github.io/StataTraining/portfolio/01_resource/)
 
+- [UCLA Statistical computing](https://stats.idre.ucla.edu/stata/)
+- [Resources for learning Stata](https://www.stata.com/links/resources-for-learning-stata/)
+- [Stata cheat sheets](https://geocenter.github.io/StataTraining/portfolio/01_resource/)
