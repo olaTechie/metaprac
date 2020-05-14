@@ -17,7 +17,7 @@ title: Intro Stata
 Laptop users: you will need a copy of Stata installed on your machine.
 
 - You can install a licensed version from https://warwick.ac.uk/services/its/servicessupport/software/list/stata
-- Find class materials at <a href="../assets/PracMaterials.zip" download>Click to Download</a>
+- Find class materials at <a href="./assets/PracMaterials.zip" download>Click to Download</a>
 - Download and extract to your desktop or any folder of your choice!
 
 ## Section descripton
@@ -443,3 +443,12 @@ tab cases_cat
 - [UCLA Statistical computing](https://stats.idre.ucla.edu/stata/)
 - [Resources for learning Stata](https://www.stata.com/links/resources-for-learning-stata/)
 - [Stata cheat sheets](https://geocenter.github.io/StataTraining/portfolio/01_resource/)
+
+## Sections
+
+1. [Overview meta-analysis data types](index.markdown)
+2. [Introduction to Stata](b_stata.markdown)
+3. [Meta-analysis of binary data](c_binary.markdown)
+4. [Meta-analysis of generic data](d_generic.markdown)
+5. [Meta-analysis of continuous data](e_continuous.markdown)
+6. [Meta-analysis of prevalence data](f_prevalence.markdown)

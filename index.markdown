@@ -44,9 +44,9 @@ layout: page
 
 ## Sections
 
-1. Overview meta-analysis data types
-2. Introduction to Stata
-3. Meta-analysis of binary data
-4. Meta-analysis of generic data
-5. Meta-analysis of continuous data
-6. Meta-analysis of prevalence data
+1. [Overview meta-analysis data types](index.markdown)
+2. [Introduction to Stata](b_stata.markdown)
+3. [Meta-analysis of binary data](c_binary.markdown)
+4. [Meta-analysis of generic data](d_generic.markdown)
+5. [Meta-analysis of continuous data](e_continuous.markdown)
+6. [Meta-analysis of prevalence data](f_prevalence.markdown)

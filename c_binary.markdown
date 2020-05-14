@@ -6,7 +6,7 @@ title: Binary meta
 
 # BINARY DATA
 
-**Learning outcomes**:
+## Learning outcomes:
 
 You will have _knowledge_ about and be able:
 
@@ -22,6 +22,14 @@ STEPS in conducting **Binary Data** meta-analysis, i.e. mortality (yes or no), h
 3. STEP 3 - SUMMARIZE meta data by using a TABLE or a FOREST PLOT
 4. STEP 4- EXPLORE HETEROGENEITY - SUB-GROUP and META-REGRESSION analysis
 5. STEP 5- EXPLORE and ADDRESS SMALL-STUDY EFFECTS
+
+## Materials and setup
+
+Laptop users: you will need a copy of Stata installed on your machine.
+
+- You can install a licensed version from https://warwick.ac.uk/services/its/servicessupport/software/list/stata
+- Find class materials at <a href="./assets/PracMaterials.zip" download>Click to Download</a>
+- Download and extract to your desktop or any folder of your choice!
 
 # Link to YouTube Video Lecture
 
@@ -560,3 +568,12 @@ graph display
     ---------------------------------------------------------------
 
 <img src="./assets/images/03_BinaryData_40_1.svg"  width="1200" height="800">
+
+## Sections
+
+1. [Overview meta-analysis data types](index.markdown)
+2. [Introduction to Stata](b_stata.markdown)
+3. [Meta-analysis of binary data](c_binary.markdown)
+4. [Meta-analysis of generic data](d_generic.markdown)
+5. [Meta-analysis of continuous data](e_continuous.markdown)
+6. [Meta-analysis of prevalence data](f_prevalence.markdown)
