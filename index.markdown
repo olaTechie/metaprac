@@ -1,6 +1,6 @@
 ---
 title: Intro
-layout: home
+layout: page
 ---
 
 <img src="assets/images/Slide1.jpeg"  width="1200" height="800" >
