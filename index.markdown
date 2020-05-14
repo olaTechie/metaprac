@@ -9,7 +9,14 @@ layout: page
 
 **Click the image below:**
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=pXREpDs86zM" target="_blank"><img src="http://img.youtube.com/vi/pXREpDs86zM/0.jpg" alt="01-Intro Doing A Meta-Analysis" width="1200" height="800" border="10" /></a>
+<!-- <a href="http://www.youtube.com/watch?feature=player_embedded&v=pXREpDs86zM" target="_blank"><img src="http://img.youtube.com/vi/pXREpDs86zM/0.jpg" alt="01-Intro Doing A Meta-Analysis" width="1200" height="800" border="10" /></a> -->
+
+<iframe width="750" height="480"
+  src="https://www.youtube.com/embed/pXREpDs86zM" 
+  frameborder="2" 
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen>
+</iframe>
 
 # Doing A Meta-Analysis
 

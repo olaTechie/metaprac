@@ -10,7 +10,12 @@ title: Intro Stata
 
 **Click the image below:**
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=DEaazFGU-p8" target="_blank"><img src="http://img.youtube.com/vi/DEaazFGU-p8/0.jpg" alt="02-Introduction Stata" width="1200" height="800" border="10" /></a>
+<iframe width="750" height="480"
+  src="https://www.youtube.com/embed/DEaazFGU-p8" 
+  frameborder="2" 
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen>
+</iframe>
 
 ## Materials and setup
 

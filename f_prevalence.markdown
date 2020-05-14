@@ -35,7 +35,13 @@ Laptop users: you will need a copy of Stata installed on your machine.
 
 **Click the image below:**
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=4IFCsymBHn4" target="_blank"><img src="http://img.youtube.com/vi/4IFCsymBHn4/0.jpg" alt="06-Prevalence Data Meta-Analysis" width="1200" height="800" border="10" /></a>
+<iframe width="750" height="480"
+  src="https://www.youtube.com/embed/4IFCsymBHn4" 
+  frameborder="2" 
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen>
+</iframe>
+<!-- <a href="http://www.youtube.com/watch?feature=player_embedded&v=4IFCsymBHn4" target="_blank"><img src="http://img.youtube.com/vi/4IFCsymBHn4/0.jpg" alt="06-Prevalence Data Meta-Analysis" width="1200" height="800" border="10" /></a> -->
 
 ## STEP 1 - LOAD DATA
 

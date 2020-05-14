@@ -35,7 +35,14 @@ Laptop users: you will need a copy of Stata installed on your machine.
 
 **Click the image below:**
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=bTNgi4bpMP0" target="_blank"><img src="http://img.youtube.com/vi/bTNgi4bpMP0/0.jpg" alt="04-Generic Data MetaAnalysis" width="1200" height="800" border="10" /></a>
+<iframe width="750" height="480"
+  src="https://www.youtube.com/embed/bTNgi4bpMP0" 
+  frameborder="2" 
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen>
+</iframe>
+
+<!-- <a href="http://www.youtube.com/watch?feature=player_embedded&v=bTNgi4bpMP0" target="_blank"><img src="http://img.youtube.com/vi/bTNgi4bpMP0/0.jpg" alt="04-Generic Data MetaAnalysis" width="1200" height="800" border="10" /></a> -->
 
 ## STEP 1 - LOAD DATA
 
