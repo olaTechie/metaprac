@@ -186,7 +186,7 @@ _Now, combine the results of trials, using the fixed- and random effects model_
 <p>
 
 - Fixed: -1.01 (95% CI -1.24 to -0.79);
-- Random (-1.06 (95% CI -1.53 to -0.59)
+- Random -1.06 (95% CI -1.53 to -0.59)
 
 </p>
 </details>
@@ -194,11 +194,9 @@ _Now, combine the results of trials, using the fixed- and random effects model_
 > _Q2.2 - Are the results homogenous?_
 
 <details><summary>Click For Answer</summary>
-<p>
 
-No, there is evidence of statistically significant substantial heterogeneity (_I<sup>2</sup>_ = 75%)
+No, there is evidence of statistically significant substantial heterogeneity (<em>I<sup>2</sup></em> = 75%)
 
-</p>
 </details>
 
 ---

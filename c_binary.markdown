@@ -351,9 +351,9 @@ In Stata, Q is labelled “Heterogeneity chi-squared.”
 <details><summary>Click For Answer</summary>
 <p>
 
-No, there is statistically significant moderate (_I<sup>2</sup>_=67%, p<0.000)
+No, there is statistically significant moderate (<em>I<sup>2</sup></em>=67%, p<0.000)
 
-[ low (0-40%), moderate (30-60%), substantial (50-90%), considerable (75-100%). Though depends on (i) magnitude and direction of effects and (ii) strength of evidence for heterogeneity (e.g. P value from the chi-squared test, or a confidence interval for _I<sup>2</sup>_)
+[ low (0-40%), moderate (30-60%), substantial (50-90%), considerable (75-100%). Though depends on (i) magnitude and direction of effects and (ii) strength of evidence for heterogeneity (e.g. P value from the chi-squared test, or a confidence interval for <em>I<sup>2</sup></em>)
 
 </p>
 </details>
@@ -432,8 +432,8 @@ Yes
 <details><summary>Click For Answer</summary>
 <p>
 
-- Smaller-RCTs (Homog., _I<sup>2</sup>_=0%, p=.448)
-- Mega-RCTs (Heterog., _I<sup>2</sup>_=82%, p=.017)
+- Smaller-RCTs (Homog., <em>I<sup>2</sup></em>=0%, p=.448)
+- Mega-RCTs (Heterog., <em>I<sup>2</sup></em>=82%, p=.017)
 
 </p>
 </details>
