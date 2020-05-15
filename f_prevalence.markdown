@@ -116,7 +116,23 @@ graph display
 
 > _Q4.1 - What is the commonest pre-morb condition?_
 
+<details><summary>Click For Answer</summary>
+<p>
+
+Hypertension `(16.37%, 95% CI 10.15 to 23.65)` followed by cardiovascular disease `(12.11%, 95% CI 4.4 to 22.7)`
+
+</p>
+</details>
+
 > _Q4.2 - What is the least common pre-mord condition?_
+
+<details><summary>Click For Answer</summary>
+<p>
+
+COPD `(0.95%, 95% CI 0.43 to 1.61)` followed by malignancy `(1.50%, 95% CI 0.58 to 2.73)`.
+
+</p>
+</details>
 
 ---
 
@@ -228,8 +244,23 @@ graph di
 
 > _Q4.3 - Is there is correlation between the prevalence estimates and % males_
 
+<details><summary>Click For Answer</summary>
+<p>
+
+No, not statistically significant
+
+</p>
+</details>
+
 > _Q4.4 - Are smaller studies tended to have reported over reported the prevalence estimates_
 
+<details><summary>Click For Answer</summary>
+<p>
+
+Yes, smaller studies tended to report higher prevalence estimates.
+
+</p>
+</details>
 ---
 
 ```python

@@ -182,7 +182,24 @@ _Now, combine the results of trials, using the fixed- and random effects model_
 
 > _Q2.1 - What are the summary estimates and 95% CI for both fixed and random-effects_
 
+<details><summary>Click For Answer</summary>
+<p>
+
+- Fixed: -1.01 (95% CI -1.24 to -0.79);
+- Random (-1.06 (95% CI -1.53 to -0.59)
+
+</p>
+</details>
+
 > _Q2.2 - Are the results homogenous?_
+
+<details><summary>Click For Answer</summary>
+<p>
+
+No, there is evidence of statistically significant substantial heterogeneity (_I<sup>2</sup>_ = 75%)
+
+</p>
+</details>
 
 ---
 
@@ -275,7 +292,24 @@ Fit a meta-regression model that explains the heterogeneity in terms of study-le
 
 > _Q2.3 - Which study level covariates are significant?_
 
+<details><summary>Click For Answer</summary>
+<p>
+
+- Unadjusted (Abstract & duration)
+- Adjusted (Abstract)
+
+</p>
+</details>
+
 > _Q2.4 - What percentage of heterogeneity is explained for these covariates?_
+
+<details><summary>Click For Answer</summary>
+<p>
+
+Abstract & duration jointly explained 100% of the between study variance
+
+</p>
+</details>
 
 ---
 
@@ -532,6 +566,14 @@ meta regress abstract duration
 ---
 
 > _Q2.5 - Examine whether there is evidence of publication bias?_
+
+<details><summary>Click For Answer</summary>
+<p>
+
+No evidence of publication bias
+
+</p>
+</details>
 
 ---
 
