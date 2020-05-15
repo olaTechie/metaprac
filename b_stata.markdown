@@ -108,9 +108,6 @@ use covid-data.dta, clear
 save new-covid-data.dta, replace // "replace" option means OK to overwrite existing file
 ```
 
-    /Users/uthlekan/Dropbox/00Todo/000.aurgent/Lecture2/notebook2/data
-
-
     file new-covid-data.dta saved
 
 ## A note about path names
